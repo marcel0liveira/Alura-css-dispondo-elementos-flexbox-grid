@@ -103,6 +103,8 @@ body {
 
 .principal {
     padding: 24px 16px;
+    display: grid;
+    gap: 16px;
 }
 
 .titulo-pagina {
@@ -117,16 +119,20 @@ body {
     background-color: #2C343A;
 }
 
+.cartao--destaque {
+    margin-bottom: 16px;    
+}
 
 .cartao__imagem {}
 
 .cartao__conteudo {
     padding: 16px;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: auto 1fr;
+    gap: 8px;
 }
 
-.cartao_destaque {
+.cartao__destaque {
     grid-column: span 2;
 }
 
@@ -148,7 +154,6 @@ body {
     color: #95999C;
     font-size: 0.8rem;
     align-self: center;
-    padding: 4px;
 }
 
 .cartao__info--tempo::before {
@@ -170,6 +175,7 @@ body {
     height: 40px;
     border-radius: 10px;
     font-size: 0.9rem;
+    justify-self: flex-end;
 }
 
 .cartao__botao--play::before {
@@ -177,11 +183,21 @@ body {
     font-size: 24px;
 }
 
-.cartao__botao--destaque{
+.cartao__botao--destaque {
     width: 100%;
     grid-column: span 2;
 }
 
-.cartao__botao--destaque::before{
+.cartao__botao--destaque::before {
     margin-right: 8px;
+}
+
+.secao{
+    display: grid;
+    gap: 16px;
+}
+
+.titulo__secao{
+    font-size: 1.2rem;
+    font-weight: 700;
 }
