@@ -92,7 +92,7 @@ body {
     }
 }
 
-.menu-lateral {
+.menu--lateral {
     display: flex;
     flex-direction: column;
     background-color: #15191C;
@@ -104,18 +104,18 @@ body {
     transition: .25s;
 }
 
-.menu-lateral--ativo {
+.menu--lateral--ativo {
     left: 0;
     transition: .25s;
 }
 
-.menu-lateral__logo {
+.menu--lateral__logo {
     width: 118px;
     align-self: center;
     padding: 16px;
 }
 
-.menu-lateral__link {
+.menu--lateral__link {
     height: 64px;
     color: #95999C;
     padding-left: 64px;
@@ -123,13 +123,13 @@ body {
     align-items: center;
 }
 
-.menu-lateral__link--ativo {
+.menu--lateral__link--ativo {
     color: #FFFFFF;
     padding-left: 56px;
     border-left: 8px solid #FFFFFF;
 }
 
-.menu-lateral__link::before {
+.menu--lateral__link::before {
     content: "\e900";
     width: 24px;
     height: 24px;
@@ -138,36 +138,36 @@ body {
     left: 24px;
 }
 
-.menu-lateral__link--inicio::before {
+.menu--lateral__link--inicio::before {
     content: "\e902";
 }
 
-.menu-lateral__link--videos::before {
+.menu--lateral__link--videos::before {
     content: "\e90e";
 }
 
-.menu-lateral__link--picos::before {
+.menu--lateral__link--picos::before {
     content: "\e909";
 }
 
-.menu-lateral__link--integrantes::before {
+.menu--lateral__link--integrantes::before {
     content: "\e903";
 }
 
-.menu-lateral__link--camisas::before {
+.menu--lateral__link--camisas::before {
     content: "\e900";
 }
 
-.menu-lateral__link--pinturas::before {
+.menu--lateral__link--pinturas::before {
     content: "\e90a";
 }
 
 @media screen and (min-width:1440px) {
-    .menu-lateral {
+    .menu--lateral {
         position: static;
         width: 200px;
         grid-column: 1;
-        grid-row: 1 / span 2;        
+        grid-row: 1 / span 2;
     }
 }
 
@@ -177,7 +177,7 @@ body {
     gap: 16px;
 }
 
-.titulo-pagina {
+.titulo--pagina {
     font-size: 1.5rem;
     font-weight: 700;
 }
@@ -191,9 +191,20 @@ body {
     .principal {
         display: grid;
         grid-template-columns: auto 1fr auto;
+        grid-template-areas:
+            "titulo--pagina titulo--pagina titulo--pagina"
+            "videos--destaque videos--destaque videos--destaque"
+            "secao--videos secao--videos secao--videos"
+            "produtos--recentes produtos--recentes produtos--recentes"
+            "secao--produtos secao--produtos secao--produtos"
+        ;
         column-gap: 32px;
         padding: 16px 60px;
         grid-column: 2;
+    }
+
+    .titulo--secao{
+        grid-column:  span 4;
     }
 }
 
@@ -202,6 +213,10 @@ body {
     border-radius: 15px;
     overflow: hidden;
     background-color: #2C343A;
+}
+
+.cartao__imagem--desktop {
+    display: none;
 }
 
 .cartao--destaque {
@@ -274,10 +289,27 @@ body {
 }
 
 .cartao--recentes {
-    display: none;
+display: none;
 }
 
 @media screen and (min-width:1440px) {
+    .cartao--destaque{
+        margin-bottom: 0;
+    }
+    
+    .cartao__imagem--mobile {
+        display: none;
+    }
+
+    .cartao__imagem--desktop {
+        display: block;
+    }
+
+    .cartao__botao--destaque {
+        grid-column: auto;
+        padding: 16px 8px;
+    }    
+
     .cartao--recentes {
         display: grid;
         grid-template-columns: auto auto;
@@ -286,6 +318,7 @@ body {
         width: 256px;
         padding: 16px;
         box-sizing: border-box;
+        align-self: flex-start;
     }
 
     .cartao--recentes .cartao__titulo {
@@ -311,24 +344,54 @@ body {
         gap: 8px;
     }
 
-    .cartao__item--thumbnail{
+    .cartao__item--thumbnail {
         width: 32px;
         grid-row: span 2;
     }
 
-    .cartao__item--titulo{
+    .cartao__item--titulo {
         font-size: 0.9rem;
         line-height: 1.2rem;
         font-weight: 700;
     }
 
-    .cartao__item--perfil{
+    .cartao__item--perfil {
         font-size: 0.8rem;
         color: #95999C;
-    }    
+    }
 }
 
 .secao {
     display: grid;
     gap: 16px;
+}
+
+@media screen and (min-width: 1440px) {
+    .secao {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .videos--destaque {
+        grid-area: videos--destaque;
+    }
+    
+    .videos--recentes {
+        grid-area: videos--recentes;
+    }
+    
+    .secao--videos {
+        grid-area: secao--videos;
+    }
+    
+    .produtos--destaque {
+        grid-area: produtos--destaque;
+    }
+    
+    .produtos--recentes {
+        grid-area: produtos--recentes;
+    }
+    
+    .secao--produtos {
+        grid-area: secao--produtos;
+    }    
 }
